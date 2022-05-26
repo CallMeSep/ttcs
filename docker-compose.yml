@@ -1,0 +1,23 @@
+version: "3.7"
+services:
+  web: #domain name trong file conf
+    build: web
+    restart: always
+    ports:
+      - 5001:5001
+    environment:
+      - DEBUG=0
+    networks:
+      - flask_network
+
+  proxy:
+    build: proxy
+    restart: always
+    ports:
+      - 80:80
+    networks:
+      - flask_network
+
+networks:
+  flask_network:
+
